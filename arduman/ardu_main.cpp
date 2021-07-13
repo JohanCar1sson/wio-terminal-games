@@ -19,6 +19,8 @@
 
 //Highscore code taken from the Breakout example (by nootropic design?)
 
+#include"TFT_eSPI.h"
+
 //***********************
 
 Arduboy2 arduboy;
@@ -28,6 +30,8 @@ Player player;
 uint8_t g_level = 1;
 
 GAME_MODE g_mode = MODE_MENU;
+
+TFT_eSPI tft;
 
 void DrawScore()
 {
@@ -81,6 +85,9 @@ void ClearAndRedrawLevel()
 
 void main_setup()
 {
+  tft.begin();
+  tft.setRotation(3);
+
   // audio setup
   //tunes.initChannel(PIN_SPEAKER_1);
   //tunes.initChannel(PIN_SPEAKER_2);
@@ -159,9 +166,18 @@ enum eMainMenu
 void DrawMenu()
 {
   arduboy.clear();
+#if 0
   arduboy.setTextSize(2);
   arduboy.setCursor(5, 5);
   arduboy.println("arduman");
+#else
+  tft.setTextSize(6);
+  tft.setTextColor(TFT_GREEN);
+  tft.drawString("ar", 20, 20);
+  tft.drawString("man", 160, 20);
+  tft.setTextColor(TFT_DARKGREY);
+  tft.drawString("du", 90, 20);
+#endif
   arduboy.setTextSize(1);
   //menu
   DrawMenuSelection("Play", MENU_PLAY, g_selection, 5, 25);

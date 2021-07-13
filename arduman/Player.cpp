@@ -294,7 +294,7 @@ void Player::OnEndOfLoop()
       delay(0);
       DrawScore();
       arduboy.setCursor(30, 35);
-      arduboy.print("GAME OVER, YOU SUCK!");
+      arduboy.print("GAME OVER!");
       arduboy.display();
       delay(2000);
 
