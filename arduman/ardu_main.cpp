@@ -45,6 +45,7 @@ void StartGame()
   arduboy.initRandomSeed();
   g_mode = MODE_PLAYING;
   //tunes.playScore(level_intro);
+  tft.fillScreen(TFT_BLACK);
   ClearAndRedrawLevel();
   arduboy.display();
 
